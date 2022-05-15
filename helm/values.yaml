@@ -10,7 +10,7 @@ fullnameOverride: ""
 
 env:
   - name: JAVA_TOOL_OPTIONS
-    value: -Djava.net.preferIPv4Stack=true -Dspring.output.ansi.enabled=always
+    value: -Djava.net.preferIPv4Stack=true -Dspring.output.ansi.enabled=always -agentlib:jdwp=transport=dt_socket,address=8000,server=y,suspend=n
   - name: SPRING_HAZELCAST_CONFIG
     value: classpath:hazelcast/hazelcast-kubernetes.yaml
 
