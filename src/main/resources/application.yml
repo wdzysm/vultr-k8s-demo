@@ -27,4 +27,5 @@ spring:
 logging:
   level:
     com.hazelcast: debug
+    com.hazelcast.kubernetes: trace
     com.hazelcast.spi.utils: trace
