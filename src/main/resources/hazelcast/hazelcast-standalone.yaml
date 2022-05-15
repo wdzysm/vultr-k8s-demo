@@ -7,3 +7,5 @@ hazelcast:
         enabled: false
       multicast:
         enabled: false
+    rest-api:
+      enabled: true
