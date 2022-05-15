@@ -1,0 +1,25 @@
+server:
+  port: 80
+
+management:
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: '*'
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
+  endpoint:
+    health:
+      probes:
+        enabled: true
+        add-additional-paths: true
+
+spring:
+  hazelcast:
+    config: classpath:hazelcast/hazelcast-standalone.yaml
+  cache:
+    type: hazelcast

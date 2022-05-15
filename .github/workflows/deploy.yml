@@ -1,0 +1,13 @@
+on: [push, workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          java-version: 8
+          distribution: temurin
+      - uses: gradle/gradle-build-action@v2
+      - run: ./gradlew jib -Djib.to.image=ghcr.io/wdzysm/vultr-k8s-demo -Djib.to.tags=latest --console=plain
