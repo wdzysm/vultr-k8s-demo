@@ -41,6 +41,7 @@ jib {
     image = 'eclipse-temurin:8u332-b09-jre-alpine'
   }
   container {
+    jvmFlags = ['-agentlib:jdwp=transport=dt_socket,address=8000,server=y,suspend=n']
     format = 'OCI'
     ports = ['80', '5701']
     creationTime = 'USE_CURRENT_TIMESTAMP'
