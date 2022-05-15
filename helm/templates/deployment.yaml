@@ -29,3 +29,4 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       serviceAccountName: default
+      automountServiceAccountToken: true
