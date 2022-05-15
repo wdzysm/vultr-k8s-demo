@@ -6,10 +6,9 @@ metadata:
     {{- include "helm.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
-  ports:
-    - port: {{ .Values.service.port }}
-      targetPort: http
-      protocol: TCP
-      name: http
+  clusterIP: {{ .Values.service.clusterIP }}
   selector:
     {{- include "helm.selectorLabels" . | nindent 4 }}
+  ports:
+    {{- toYaml .Values.service.ports | nindent 4 }}
+  publishNotReadyAddresses: true

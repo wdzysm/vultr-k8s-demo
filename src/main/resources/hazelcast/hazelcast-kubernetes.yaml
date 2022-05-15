@@ -1,9 +1,8 @@
 hazelcast:
+  import:
+    - classpath:hazelcast/hazelcast.yaml
   network:
     join:
-      multicast:
-        enabled: false
       kubernetes:
         enabled: true
-        namespace: default
-        service-name: vultr-k8s-demo
+        service-dns: app-vultr-k8s-demo.default.svc.cluster.local

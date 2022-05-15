@@ -1,6 +1,0 @@
-hazelcast-client:
-  network:
-    kubernetes:
-      enabled: true
-      namespace: default
-      service-name: vultr-k8s-demo

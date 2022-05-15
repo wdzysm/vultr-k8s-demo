@@ -1,2 +1,2 @@
 hazelcast:
-  cluster-name: dev
+  cluster-name: vultr-k8s-demo

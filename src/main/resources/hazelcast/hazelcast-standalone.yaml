@@ -1,5 +1,9 @@
 hazelcast:
+  import:
+    - classpath:hazelcast/hazelcast.yaml
   network:
     join:
       auto-detection:
+        enabled: false
+      multicast:
         enabled: false

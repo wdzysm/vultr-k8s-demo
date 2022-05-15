@@ -10,4 +10,6 @@ jobs:
           java-version: 8
           distribution: temurin
       - uses: gradle/gradle-build-action@v2
-      - run: ./gradlew jib -Djib.to.image=ghcr.io/wdzysm/vultr-k8s-demo -Djib.to.tags=latest --console=plain
+      - run: |
+          echo "${{ secrets.GITOPS_TOKEN }}" | docker login ghcr.io -u wdzysm --password-stdin
+          ./gradlew jib -Djib.to.image=ghcr.io/wdzysm/vultr-k8s-demo --console=plain --info

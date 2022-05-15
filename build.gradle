@@ -37,5 +37,12 @@ tasks.named('test') {
 }
 
 jib {
-  from { image = 'eclipse-temurin:8u332-b09-jre-alpine' }
+  from {
+    image = 'eclipse-temurin:8u332-b09-jre-alpine'
+  }
+  container {
+    format = 'OCI'
+    ports = ['80', '5701']
+    creationTime = 'USE_CURRENT_TIMESTAMP'
+  }
 }

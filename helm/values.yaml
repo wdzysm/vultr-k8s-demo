@@ -2,36 +2,55 @@ replicaCount: 2
 
 image:
   repository: ghcr.io/wdzysm/vultr-k8s-demo
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   tag: latest
 
-imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
-podAnnotations: {}
-
-podSecurityContext: {}
-
-securityContext: {}
+env:
+  - name: JAVA_TOOL_OPTIONS
+    value: -Djava.net.preferIPv4Stack=true
+  - name: SPRING_HAZELCAST_CONFIG
+    value: classpath:hazelcast/hazelcast-kubernetes.yaml
 
 service:
   type: ClusterIP
-  port: 80
+  clusterIP: None
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+    - name: hazelcast
+      port: 5701
+      targetPort: 5701
 
 ports:
   - name: http
     containerPort: 80
+    protocol: TCP
+  - name: hazelcast
+    containerPort: 5701
     protocol: TCP
 
 livenessProbe:
   httpGet:
     path: /actuator/health/liveness
     port: http
+  initialDelaySeconds: 10
+  periodSeconds: 10
+  timeoutSeconds: 1
+  successThreshold: 1
+  failureThreshold: 5
 readinessProbe:
   httpGet:
     path: /actuator/health/readiness
     port: http
+  initialDelaySeconds: 10
+  periodSeconds: 10
+  timeoutSeconds: 1
+  successThreshold: 1
+  failureThreshold: 5
 
 resources:
   limits:
@@ -40,9 +59,3 @@ resources:
   requests:
     cpu: 100m
     memory: 128Mi
-
-nodeSelector: {}
-
-tolerations: []
-
-affinity: {}
