@@ -23,3 +23,8 @@ spring:
     config: classpath:hazelcast/hazelcast-standalone.yaml
   cache:
     type: hazelcast
+
+logging:
+  level:
+    com.hazelcast: debug
+    com.hazelcast.spi.utils.: trace
