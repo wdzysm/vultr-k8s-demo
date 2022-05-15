@@ -5,4 +5,5 @@ hazelcast:
     join:
       kubernetes:
         enabled: true
-        service-dns: app-vultr-k8s-demo.default.svc.cluster.local
+        namespace: default
+        service-name: app-vultr-k8s-demo
