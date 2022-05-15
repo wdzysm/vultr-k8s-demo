@@ -7,3 +7,5 @@ hazelcast:
         enabled: true
         namespace: default
         service-name: app-vultr-k8s-demo
+    rest-api:
+      enabled: true
